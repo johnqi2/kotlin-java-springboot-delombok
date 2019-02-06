@@ -1,0 +1,18 @@
+* create category
+curl -i -XPOST 'http://localhost:9080/categories' -H 'Content-Type:application/json' -d '{"name": "Server"}'
+
+* retrieve category
+curl -i 'http://localhost:9080/categories/1'
+
+* retrieve category with products
+curl -i 'http://localhost:9080/categories/1?includeProducts=true'
+
+* create project
+curl -i -XPOST 'http://localhost:9080/products' -H 'Content-Type:application/json' -d '{"name": "My Product", "categoryId": 1}'
+
+* retrieve project
+curl -i 'http://localhost:9080/products/1'
+
+
+
+

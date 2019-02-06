@@ -1,0 +1,39 @@
+<configuration>
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- encoder defaults to ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
+        <encoder>
+            <pattern>%d{YYYY-MM-dd HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>./logs/ktboot-%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>64 MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+
+    <logger name="com.example.ktboot.controller">
+        <level value="INFO"/>
+    </logger>
+
+    <logger name="com.example.ktboot.repo">
+        <level value="INFO"/>
+    </logger>
+
+    <!-- set to DEBUG to log hibernate generated SQL in file -->
+    <logger name="org.hibernate.SQL">
+        <level value="DEBUG"/>
+    </logger>
+
+    <!-- set to Trace to log hibernate SQL binding parameters -->
+    <logger name="org.hibernate.type.descriptor.sql">
+        <level value="TRACE"/>
+    </logger>
+
+    <root level="ERROR">
+        <appender-ref ref="FILE"/>
+    </root>
+
+</configuration>
